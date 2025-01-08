@@ -20,14 +20,19 @@ from StudentApiApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
 
     # urls for function based views 
+=======
+    # Function based views
+>>>>>>> v3
     path('student/v1/all',views.get_students,name="get_all_student_records"),
     path('student/v1/add',views.post_students,name="create_student_record"),
     path('student/v1/update/<int:pk>',views.put_students,name="update_student_record"),
     path('student/v1/get/<int:pk>',views.get_one_students,name="get_one_student_record"),
     path('student/v1/delete/<int:pk>',views.delete_student,name="delete_student_record"),
 
+<<<<<<< HEAD
     # urls for class based views  using APIView
 
     path('student/v2',views.Student_ApiView.as_view(),name="class_based_view_1_for_SApi_using_APIView"),
@@ -36,4 +41,15 @@ urlpatterns = [
     # urls for class based views using generics
 
     
+=======
+    # class based views using APIView
+
+    path('student/v2',views.Student_ApiView.as_view(),name="class_based_views_01_using_APIView"),
+    path('student/v2/<int:pk>',views.Student_ApiView.as_view(),name="class_based_views_02_using_APIView"),
+
+    # class based views using Generics
+
+    path('student/v3',views.Api_Generics_01.as_view(),name="class_based_views_01_using_generics"),
+    path('student/v3/<int:pk>',views.Api_Generics_02.as_view(),name="class_based_views_02_using_generics"),
+>>>>>>> v3
 ]

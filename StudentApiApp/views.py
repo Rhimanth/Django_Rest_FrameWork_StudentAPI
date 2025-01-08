@@ -89,6 +89,7 @@ class Student_ApiView(APIView):
         query.delete()
         return Response({"Details":"Student Record Deleted Successfully !!!..."})
         
+<<<<<<< HEAD
 
 # Class based views using generics
 
@@ -96,5 +97,14 @@ class Api_using_generics_01(ListCreateAPIView):
     queryset=Student.objects.all()
     serializer_class=StudentSerializers
 class Api_using_generics_02(RetrieveUpdateDestroyAPIView):
+=======
+# Class  based Views Using Generics
+
+
+class Api_Generics_01(ListCreateAPIView):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializers
+class Api_Generics_02(RetrieveUpdateDestroyAPIView):
+>>>>>>> v3
     queryset=Student.objects.all()
     serializer_class=StudentSerializers
