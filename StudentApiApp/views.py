@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView,CreateAPIView,UpdateAPIView,DestroyAPIView,RetrieveAPIView,ListCreateAPIView,RetrieveUpdateDestroyAPIView,RetrieveUpdateAPIView,RetrieveDestroyAPIView
 from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import ListModelMixin,CreateModelMixin,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin
 from rest_framework import viewsets
 from rest_framework.response import Response
 # Create your views here.
@@ -89,22 +90,38 @@ class Student_ApiView(APIView):
         query.delete()
         return Response({"Details":"Student Record Deleted Successfully !!!..."})
         
-<<<<<<< HEAD
-
-# Class based views using generics
-
-class Api_using_generics_01(ListCreateAPIView):
-    queryset=Student.objects.all()
-    serializer_class=StudentSerializers
-class Api_using_generics_02(RetrieveUpdateDestroyAPIView):
-=======
 # Class  based Views Using Generics
-
 
 class Api_Generics_01(ListCreateAPIView):
     queryset=Student.objects.all()
     serializer_class=StudentSerializers
 class Api_Generics_02(RetrieveUpdateDestroyAPIView):
->>>>>>> v3
     queryset=Student.objects.all()
     serializer_class=StudentSerializers
+
+# Class based views using GenericAPIView and Mixins
+
+class Api_mixins_01(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializers
+    def get(self,request):
+        return self.list(request)
+    def post(self,request):
+        return self.create(request)
+class Api_Mixins_02(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializers
+    def get(self,request,pk):
+        return self.retrieve(request,pk=pk)
+    def put(self,request,pk):
+        return self.update(request,pk=pk)
+    def delete(self,request,pk):
+        return self.destroy(request,pk=pk)
+    
+
+# class based views using ModelViewsets
+
+class Api_viewSets(viewsets.ModelViewSet):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializers
+    
