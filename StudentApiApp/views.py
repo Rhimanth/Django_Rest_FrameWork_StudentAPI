@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import School,Standard,Student
-from .serializers import StandarcSerializer,StudentSerializers,SchoolSerializer
+from .serializers import StandarSerializer,StudentSerializers,SchoolSerializer
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView,CreateAPIView,UpdateAPIView,DestroyAPIView,RetrieveAPIView,ListCreateAPIView,RetrieveUpdateDestroyAPIView,RetrieveUpdateAPIView,RetrieveDestroyAPIView
@@ -124,4 +124,37 @@ class Api_Mixins_02(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyMo
 class Api_viewSets(viewsets.ModelViewSet):
     queryset=Student.objects.all()
     serializer_class=StudentSerializers
+
+
+
+#class based views for standard using generics
+
+
+class Standard_api_list(ListAPIView):
+    queryset=Standard.objects.all()
+    serializer_class=StandarSerializer
+class  Standard_api_create(CreateAPIView):
+     queryset=Standard.objects.all()
+     serializer_class=StandarSerializer
+class Standard_api_RUD(RetrieveUpdateDestroyAPIView):
+    queryset=Standard.objects.all()
+    serializer_class=StandarSerializer
+class Standard_api_Retrieve(RetrieveAPIView):
+    queryset=Standard.objects.all()
+    serializer_class=StandarSerializer
+
+
+
+#class based views for School using generics
+
+class school_api_list(ListAPIView):
+    queryset=School.objects.all()
+    serializer_class=SchoolSerializer
+
+class school_api_RUD(RetrieveUpdateDestroyAPIView):
+    queryset=School.objects.all()
+    serializer_class=SchoolSerializer
+class  school_api_create(CreateAPIView):
+    queryset=School.objects.all()
+    serializer_class=SchoolSerializer
     

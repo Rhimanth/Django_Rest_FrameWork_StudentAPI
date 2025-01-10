@@ -48,4 +48,14 @@ urlpatterns = [
     # class based views using modelviewsets
     path('',include(router.urls)),
 
+    # URL s for Standard model 
+    path('standard/v5/all',views.Standard_api_list.as_view(),name="List of records for standard"),
+    path('standard/v5/add',views.Standard_api_create.as_view(),name="add a record for standard"),
+    path('standard/v5/Update/<int:pk>',views.Standard_api_RUD.as_view(),name="Update a record for standard"),
+    path('standard/v5/<int:pk>',views.Standard_api_Retrieve.as_view(),name="retrive  a record for standard"),
+
+# URL s for School model 
+    path('school/v6/all',views.school_api_list.as_view(),name="List of records for standard"),
+    path('school/v6/add',views.school_api_create.as_view(),name="add a record for standard"),
+    path('school/v6/Update/<int:pk>',views.school_api_RUD.as_view(),name="Update a record for standard"),
 ]
